@@ -1,0 +1,3 @@
+PUT http://api.localhost:8080/users/activated HTTP/1.1
+
+{"token": "Z6LOCUSIDAZBJ6AD3WRTTYMVCM"}

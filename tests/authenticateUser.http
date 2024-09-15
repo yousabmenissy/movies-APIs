@@ -1,0 +1,7 @@
+POST  http://api.localhost:8080/tokens/authentication HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "admin@example.com",
+    "password":"adminpass"
+}

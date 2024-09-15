@@ -1,0 +1,19 @@
+PUT http://api.localhost:8080/movies/3 HTTP/1.1
+
+{
+    "title": "The Hateful Eight",
+    "director": "Quentin Tarantino",
+    "producers": ["Harvey Weinstein", "Bob Weinstein", "Stacey Sher", "Shannon McIntosh", "Richard N. Gladstein"],
+    "prod_companies": ["Visiona Romantica", "Double Feature Films", "FilmColony"],
+    "writers": ["Quentin Tarantino"],
+    "overview": "In the dead of a Wyoming winter, a bounty hunter and his prisoner find shelter in a cabin currently inhabited by a collection of nefarious characters.",
+    "status": "released",
+    "budget": 44000000,
+    "age_rating": "R",
+    "language": "english",
+    "runtime": 168,
+    "cast_members": ["samuel l. Jackson", "Kurt Russell", "Jennifer Jason Leigh", "Walton Goggins", "Demián Bichir", "Tim Roth", "Michael Madsen", "Bruce Dern", "James Parks", "Dana Gourrier", "Zoë Bell", "Lee Horsley"],
+    "genres": ["crime", "drama", "Mystery", "Thriller", "Western"],
+    "release_date": "2015-12-25",
+    "country": "USA"
+}

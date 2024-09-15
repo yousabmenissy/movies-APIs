@@ -1,0 +1,13 @@
+GET http://api.localhost:8080/movies HTTP/1.1
+
+###
+
+GET http://api.localhost:8080/movies?cast-members=Kurt HTTP/1.1
+
+###
+
+GET http://api.localhost:8080/users?email=ekb.eg.123456@gmail.com&print=pretty HTTP/1.1
+
+### 
+
+GET http://api.localhost:8080/movies/17 HTTP/1.1

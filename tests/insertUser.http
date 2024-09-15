@@ -1,0 +1,13 @@
+POST http://api.localhost:8080/users HTTP/1.1
+
+# {
+#     "name": "yousab",
+#     "email": "yousab@gmail.com",
+#     "password": "password"
+# }
+
+{
+     "name": "admin",
+     "email": "admin@example.com",
+     "password": "adminpass"
+}
