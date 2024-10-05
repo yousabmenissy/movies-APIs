@@ -330,7 +330,6 @@ func (app *Application) ActivateUserHandler(w http.ResponseWriter, r *http.Reque
 		app.BadRequestResponse(w, r)
 		return
 	}
-	app.logger.LogDebug.Printf("%v", input.TokenPlaintext)
 
 	v := validation.New()
 	if tokens.ValidateTokenPlaintext(&v, input.TokenPlaintext); !v.Valid() {
@@ -339,7 +338,6 @@ func (app *Application) ActivateUserHandler(w http.ResponseWriter, r *http.Reque
 	}
 
 	user, err := app.models.Users.GetForToken(input.TokenPlaintext, tokens.ScopeActivation)
-	app.logger.LogDebug.Printf("%+v", user)
 	if err != nil {
 		switch {
 		case errors.Is(err, internal.ErrNoRecord):

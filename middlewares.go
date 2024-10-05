@@ -14,12 +14,10 @@ func (app *Application) Authenticate(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Vary", "Authorization")
 
-		app.logger.LogDebug.Println("started Authenticate middleware")
 		authHeader := r.Header.Get("Authorization")
 
 		if authHeader == "" {
 			r = app.ContextSetUser(r, users.AnnonymousUser)
-			app.logger.LogDebug.Println("anonymous user")
 			next.ServeHTTP(w, r)
 			return
 		}
@@ -52,35 +50,29 @@ func (app *Application) Authenticate(next http.Handler) http.Handler {
 
 		r = app.ContextSetUser(r, user)
 
-		app.logger.LogDebug.Println("about to exit Authenticate middleware")
 		next.ServeHTTP(w, r)
 	})
 }
 func (app *Application) RequireActivatedUser(next http.HandlerFunc) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		app.logger.LogDebug.Println("started RequireActivatedUser middleware")
 		user := app.contextGetUser(r)
 
 		if user.IsAnonymous() {
-			app.logger.LogDebug.Println("user is anonymous")
 			app.AuthenticationRequiredResponse(w, r)
 			return
 		}
 
 		if !user.Activated {
-			app.logger.LogDebug.Println("user is not activated")
 			app.InactiveAccountResponse(w, r)
 			return
 		}
 
-		app.logger.LogDebug.Println("about to exit RequireActivatedUser middleware")
 		next.ServeHTTP(w, r)
 	})
 }
 
 func (app *Application) RequirePermission(code string, next http.HandlerFunc) http.HandlerFunc {
 	fn := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		app.logger.LogDebug.Println("started the RequirePermissionRead middleware")
 		user := app.contextGetUser(r)
 
 		permissions, err := app.models.Permissions.GetAllForUser(user.Id)
